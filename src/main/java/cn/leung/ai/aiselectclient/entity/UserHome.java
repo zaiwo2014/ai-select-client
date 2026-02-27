@@ -40,10 +40,10 @@ public class UserHome implements Serializable {
 
     /**
      * 用户在该家庭的角色
-1. 拥有者
-2. 管理者
-3. 普通用户
-4. 待加入
+        1. 拥有者
+        2. 管理者
+        3. 普通用户
+        4. 待加入
      */
     private Integer userRole;
 
