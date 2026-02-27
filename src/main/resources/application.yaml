@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: ai-select-client
+  datasource:
+    url: jdbc:mysql://192.168.10.254:3306/surp_life?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  ai:
+    dashscope:
+      api-key: your_api_key
+      chat:
+        options:
+          model: qwen-plus
+          temperature: 0.7
+      embedding:
+        options:
+          model: text-embedding-v2
+
+server:
+  port: 8991
+
+logging:
+  level:
+    cn.leung.ai: debug
