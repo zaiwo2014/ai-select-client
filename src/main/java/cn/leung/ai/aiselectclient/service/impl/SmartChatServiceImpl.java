@@ -6,7 +6,10 @@ import cn.leung.ai.aiselectclient.service.ISmartChatService;
 import cn.leung.ai.aiselectclient.service.IUserDeviceService;
 import com.alibaba.cloud.ai.graph.agent.ReactAgent;
 import com.alibaba.cloud.ai.graph.exception.GraphRunnerException;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONArray;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.Prompt;
@@ -18,6 +21,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @Service
 public class SmartChatServiceImpl implements ISmartChatService {
 
@@ -54,13 +58,14 @@ public class SmartChatServiceImpl implements ISmartChatService {
 
         PromptTemplate promptTemplate = new PromptTemplate(SYSTEM_PROMPT);
         Map<String, Object> params = Map.of(
-                "context", userDeviceWithRoomName.isEmpty() ? "没有相关设备" : userDeviceWithRoomName.toString()
+                "context", userDeviceWithRoomName.isEmpty() ? "没有相关设备" : JSON.toJSONString(userDeviceWithRoomName)
         );
 
         Prompt prompt = promptTemplate.create(params);
 
+        log.info("prompt : {}",prompt.getContents());
 
-        ReactAgent agent = ReactAgent.builder().name("device_elector")
+        ReactAgent agent = ReactAgent.builder().name("device_selector")
                 .model(chatModel)
                 .systemPrompt(prompt.getContents())
                 .outputType(ResponseFormat.class)
