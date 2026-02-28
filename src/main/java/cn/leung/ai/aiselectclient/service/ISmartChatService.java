@@ -6,4 +6,6 @@ public interface ISmartChatService {
 
     void chatService(Long homeId,String question) throws GraphRunnerException;
 
+    void chatServiceWithFunctionDemo(String question) throws GraphRunnerException;
+
 }

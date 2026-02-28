@@ -28,7 +28,13 @@ class AiSelectClientApplicationTests {
 
     @Test
     public void test() throws GraphRunnerException {
-        smartChatService.chatService(1904059974249017345L,"打开123");
+        smartChatService.chatService(1904059974249017345L,"打开书房灯");
+    }
+
+
+    @Test
+    public void test2() throws GraphRunnerException {
+        smartChatService.chatServiceWithFunctionDemo("使用特殊加法计算 1 + 1");
     }
 
 }

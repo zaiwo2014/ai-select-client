@@ -18,6 +18,7 @@ public class ChatOutputSchema {
         private String name;
 
         private double confidence;
+
     }
 
 }

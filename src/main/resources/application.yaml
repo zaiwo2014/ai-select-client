@@ -23,3 +23,5 @@ server:
 logging:
   level:
     cn.leung.ai: debug
+    # application.properties
+    org.springframework.ai.agent: DEBUG
